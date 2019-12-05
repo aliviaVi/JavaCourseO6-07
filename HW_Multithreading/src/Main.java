@@ -3,19 +3,31 @@ public class Main {
 
         Counter count=new Counter(0);
 
-        Runnable myThread1=new MyThread(count);
-        Runnable myThread2=new MyThread(count);
 
+
+        Runnable myThread1 = ()->{
+        for (int i = 0; i <10 ; i++) {
+            count.increment();
+            System.out.println(count.getCountValue()+ " value from increment");
+        }
+
+        };
+        myThread1.run();
         Thread t1=new Thread(myThread1);
-        Thread t2=new Thread(myThread2);
-
         t1.start();
+
+        Runnable myThread2=()->{
+            for (int i = 0; i <10 ; i++){
+                count.decrement();
+                System.out.println(count.getCountValue()+ " value from decrement");
+            }
+        };
+        myThread2.run();
+        Thread t2=new Thread(myThread2);
         t2.start();
+
         t1.join();
         t2.join();
-
-        /*new MyThread(count);
-        new MyThread(count);*/
 
 
         System.out.println(count.getCountValue()+ " value from Main");
