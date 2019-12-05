@@ -5,15 +5,15 @@ public class Counter {
         this.count = count;
     }
 
-    public void increment(){
+    public synchronized void increment(){
         count ++;
     }
 
-    public void decrement(){
+    public  synchronized void decrement(){
         count --;
     }
 
-    public int getCountValue(){
+    public  int getCountValue(){
         return count;
     }
 }
