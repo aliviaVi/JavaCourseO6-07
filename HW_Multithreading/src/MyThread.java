@@ -12,10 +12,16 @@ public class MyThread implements Runnable {
     @Override
     public void run() {
         for (int i = 0; i <10 ; i++) {
-            count.increment();
-            System.out.println(count.getCountValue()+ " value from increment");
-            count.decrement();
-            System.out.println(count.getCountValue()+ " value from decrement");
+            if (count.getCountValue() == 0) {
+                count.increment();
+
+                System.out.println(count.getCountValue()+ " value from decrement");
+            } else {
+                count.decrement();
+                System.out.println(count.getCountValue()+ " value from increment");
+            }
+
+
         }
 
     }

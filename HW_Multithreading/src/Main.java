@@ -1,7 +1,7 @@
 public class Main {
     public static void main(String[] args) throws InterruptedException {
 
-        Counter count=new Counter(10);
+        Counter count=new Counter(0);
 
         Runnable myThread1=new MyThread(count);
         Runnable myThread2=new MyThread(count);
@@ -10,8 +10,8 @@ public class Main {
         Thread t2=new Thread(myThread2);
 
         t1.start();
-        t1.join();
         t2.start();
+        t1.join();
         t2.join();
 
         /*new MyThread(count);
